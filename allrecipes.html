@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    @font-face {
+        font-family: 'Lemonmilk';
+        src: url('media/fonts/lemonmilk.otf') format('opentype');
+    }
+    body {
+        font-family: 'Lemonmilk', sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        color: white;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 100%;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .logo {
+        font-size: 48px;
+        font-weight: bold;
+        margin-right: 40px;
+    }
+
+    .logo span {
+        color: yellow;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 5px;
+    }
+
+    .nav-links a:hover {
+        text-decoration: none;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: yellow;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* main container styling */
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-top: 20px;
+    }
+
+    .recipe-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        background: white;
+        height: 320px;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .recipe-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .recipe-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .recipe-card p {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: black;
+    }
+
+    /* Footer Styling */
+    .footer {
+        background-color: black;
+        color: white;
+        padding: 15px 20px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-text {
+        font-size: 1rem;
+    }
+
+    .footer-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-nav ul li {
+        display: inline;
+    }
+
+    .footer-nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .footer-nav ul li a:hover {
+        text-decoration: underline;
+    }
+
+</style>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar">
+        <a href="home.html" class="logo">The Flavorist<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="allrecipes.html">Recipes</a></li>
+            <li><a href="health.html">Health & Diet</a></li>
+            <li><a href="cuisines.html">Cuisines</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="customerFeedback.html">Feedback</a></li>
+            <li><a href="reviews.php">Review</a></li>
+            <li><a href="logout.php">Logout</a></li> 
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h1>Explore & Cook: All Our Recipes in One Place!</h1>
+        <div class="recipe-grid">
+            <a href="Recipes/avocadotoastwithpoachedegg.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/avocado_toast.png" alt="Creamy Pasta">
+                <p>Avocado Toast with Poached Egg</p>
+            </a>
+
+            <a href="Recipes/chiapuddingwithberries.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/chia_pudding.png" alt="Creamy Pasta">
+                <p>Chia Pudding</p>
+            </a>
+
+            <a href="Recipes/ChickenBiryani.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/chicken_biryani.png" alt="Chicken Biryani">
+                <p>Chicken Biryani</p>
+            </a>
+
+            <a href="Recipes/classiccheeseburger.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/classic_cheeseburger.png" alt="Creamy Pasta">
+                <p>Classic Cheeseburger</p>
+            </a>
+
+            <a href="Recipes/falafelwrap.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/falafel_wrap.png" alt="Creamy Pasta">
+                <p>Falafel Wrap</p>
+            </a>
+
+            <a href="Recipes/guacamole.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/guacamole.png" alt="Margherita Pizza">
+                <p>Guacamole</p>
+            </a>
+
+            <a href="Recipes/horchata.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/horchata.png" alt="Creamy Pasta">
+                <p>Horchata</p>
+            </a>
+
+            <a href="Recipes/hummus.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/hummus.png" alt="Creamy Pasta">
+                <p>Hummus</p>
+            </a>
+
+            <a href="Recipes/MangoLassi.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/mango_lassi.png" alt="Creamy Pasta">
+                <p>Mango Lassi</p>
+            </a>
+
+            <a href="Recipes/MargheritaPizza.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/margherita_pizza.png" alt="Creamy Pasta">
+                <p>Margherita Pizza</p>
+            </a>
+
+            <a href="Recipes/MatchaLatte.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/matcha_latte.png" alt="Creamy Pasta">
+                <p>Matcha Latte</p>
+            </a>
+
+            <a href="Recipes/MinestroneSoup.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/minestrone_soup.png" alt="Creamy Pasta">
+                <p>Minestrone Soup</p>
+            </a>
+
+            <a href="Recipes/MisoRamen.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/miso_ramen.png" alt="Creamy Pasta">
+                <p>Miso Ramen</p>
+            </a>
+
+            <a href="Recipes/PaneerTikka.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/Paneer_Tikka.png" alt="Creamy Pasta">
+                <p>Paneer Tikka</p>
+            </a>
+
+            <a href="Recipes/shawarma.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/shawarma.png" alt="Creamy Pasta">
+                <p>Shawarma</p>
+            </a>
+
+            <a href="Recipes/StuffedBellPeppers.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/Stuffed_bell_peppers.png" alt="Creamy Pasta">
+                <p>Stuffed Bell Peppers</p>
+            </a>
+
+            <a href="Recipes/tacosalpastor.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/tacos_al_pastor.png" alt="Creamy Pasta">
+                <p>Tacos Al Pastor</p>
+            </a>
+
+            <a href="Recipes/TeriyakiChicken.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/teriyaki_chicken.png" alt="Creamy Pasta">
+                <p>Teriyaki Chicken</p>
+            </a>
+
+            <a href="Recipes/TurmericGoldenMilk.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/Turmeric_golden_milk.png" alt="Creamy Pasta">
+                <p>Turmeric Golden Milk</p>
+            </a>
+
+            <a href="Recipes/blueberrycheesecake.html" class="recipe-card">
+                <img src="Recipes/recipeimgs/blueberrycheesecake.png" alt="Creamy Pasta">
+                <p>Turmeric Golden Milk</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Credit: Manasi Patil, Manasvi Naik & Mehek Abhyankar</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="allrecipes.html">Recipes</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="contactUs.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

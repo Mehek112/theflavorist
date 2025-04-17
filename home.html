@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Flavorist</title>
+    <style>
+        @font-face {
+            font-family: 'Lemonmilk';
+            src: url('media/fonts/lemonmilk.otf') format('opentype');
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0; 
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Lemonmilk', sans-serif;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            color: white;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-right: 40px;
+        }
+
+        .logo span {
+            color: yellow;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: none;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background-color: yellow;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Homepage Hero Section */
+        .hero {
+            font-family: 'Lemonmilk', sans-serif;
+            position: relative;
+            width: 70%; 
+            height: 80vh; 
+            background-image: url('media/images/homepage_hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 10px;
+            margin: 50px auto 0; 
+            padding: 0 20px;
+            color: white;
+            overflow: hidden; 
+        }
+
+        /* Gradient Overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            z-index: 1; 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; 
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            padding: 12px 24px;
+            background-color: yellow;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            font-family: 'Lemonmilk';
+            border-radius: 5px;
+        }
+
+        .hero button:hover {
+            font-family: 'Lemonmilk';
+            background-color: darkorange;
+        }
+
+        /* Craving Section */
+        .craving-section {
+            font-family: 'Lemonmilk', sans-serif;
+            text-align: center;
+            margin: 50px auto;
+            width: 70%; 
+        }
+
+        .craving-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .craving-images {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .craving-images a {
+            display: block;
+            width: 32%; 
+            height: 0;
+            padding-top: 32%; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px; 
+            transition: transform 0.3s ease;
+        }
+
+        .craving-images a:hover {
+            transform: scale(1.05);
+        }
+
+        .craving-images a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            z-index: 1;
+        }
+
+        .craving-images a .text {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            z-index: 2;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Explore More Section */
+        .explore-section {
+            text-align: center;
+            font-family: 'Lemonmilk', sans-serif;
+            display: block;
+            margin: 50px auto;
+            width: 70%; 
+        }
+
+        .explore-section h3 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 40px; 
+        }
+
+        .explore-images {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap; 
+        }
+
+        .explore-images .image {
+            text-align: center;
+            width: 10%; 
+            margin-bottom: 30px;
+        }
+
+        .explore-images .circle {
+            width: 200px; 
+            height: 200px; 
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%; 
+            overflow: hidden;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .explore-images .circle:hover {
+            transform: scale(1.05);
+        }
+
+        .explore-images .text {
+            margin-left: 40%;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Slider Section */
+        .slider {
+            padding-block: 12px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            position: relative;
+            mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.3) 5%, #000 20%, #000 80%, rgba(0, 0, 0, 0.3) 95%);
+            -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.3) 5%, #000 20%, #000 80%, rgba(0, 0, 0, 0.3) 95%);
+        }
+
+        .slider-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .slider-section {
+            margin-bottom: 50px;
+        }
+
+        .list {
+            display: flex;
+            width: calc(var(--width) * var(--imageQuantity) * 2);
+            gap: calc(var(--width) / 4);
+            animation: reverseScroll 20s linear infinite;
+        }
+        .list:hover {
+            animation-play-state: paused !important;
+        }
+        .item {
+            width: var(--width);
+            height: var(--height);
+            flex-shrink: 0;
+        }
+        .item img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            border-radius: 5px;
+            transition: filter 0.5s ease-in-out;
+        }
+        @keyframes reverseScroll {
+            0% {
+                transform: translateX(calc(-1 * var(--width) * var(--imageQuantity)));
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        .slider:hover .item img {
+            filter: grayscale(1);
+        }
+        .slider .item:hover img {
+            filter: grayscale(0);
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-nav ul li {
+            display: inline;
+        }
+
+        .footer-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .logo {
+                font-size: 32px;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                height: 60vh; 
+                padding: 0 10px;
+                max-width: 100%; 
+                margin: 30px auto 0; 
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .craving-section {
+                width: 90%; 
+            }
+
+            .craving-images {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .craving-images a {
+                width: 100%; 
+                padding-top: 100%; 
+            }
+
+            .explore-section {
+                width: 90%; 
+            }
+
+            .explore-images {
+                flex-direction: column; 
+                gap: 20px; 
+            }
+
+            .explore-images .image {
+                width: 100%; 
+                text-align: center;
+            }
+
+            .explore-images .circle {
+                width: 150px; 
+                height: 150px;
+            }
+
+            .explore-images .text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="home.html" class="logo">The Flavorist<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="allrecipes.html">Recipes</a></li>
+            <li><a href="health.html">Health & Diet</a></li>
+            <li><a href="cuisines.html">Cuisines</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="customerFeedback.html">Feedback</a></li>
+            <li><a href="reviews.php">Review</a></li>
+            <li><a href="logout.php">Logout</a></li> 
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Secrets of Flavor</h1>
+            <p>Explore a world of culinary creativity and uncover delicious recipes and health tips.</p>
+            <a href="allrecipes.html">
+                <button>Explore Now</button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Craving Section -->
+    <section class="craving-section">
+        <h2>What We're Craving</h2>
+        <div class="craving-images">
+            <a href="Recipes/TeriyakiChicken.html" style="background-image: url('media/images/craving-1.jpg');">
+                <div class="text">Steaming Chicken You Can’t Miss</div>
+            </a>
+            <a href="Recipes/StuffedBellPeppers.html" style="background-image: url('media/images/craving-2.jpg');">
+                <div class="text">A Healthy & Fresh Choice</div>
+            </a>
+            <a href="Recipes/MangoLassi.html" style="background-image: url('media/images/craving-3.jpg');">
+                <div class="text">A Drink That Refreshes</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Explore More Section -->
+    <section class="explore-section">
+        <h3>Explore More</h3>
+        <div class="explore-images">
+            <div class="image">
+                <div class="circle" style="background-image: url('media/images/explore-1.jpg');"></div>
+                <div class="text">International Cuisines</div>
+            </div>
+            <div class="image">
+                <div class="circle" style="background-image: url('media/images/explore-2.jpg');"></div>
+                <div class="text">Quick & Easy</div>
+            </div>
+            <div class="image">
+                <div class="circle" style="background-image: url('media/images/explore-3.jpg');"></div>
+                <div class="text">Community Picks</div>
+            </div>
+            <div class="image">
+                <div class="circle" style="background-image: url('media/images/explore-4.jpg');"></div>
+                <div class="text">Liquid Nirvana</div>
+            </div>
+            <div class="image">
+                <div class="circle" style="background-image: url('media/images/explore-5.jpeg');"></div>
+                <div class="text">Fancy Flavors</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slider Section -->
+    <section class="slider-section">
+        <h3 class="slider-heading">What You Can Make</h3>
+        <div class="slider" reverse="true" style="--width: 200px; --height: 200px; --imageQuantity: 7">
+            <div class="list">
+                <div class="item"><img src="media/images/slider-1.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-2.jpeg" alt=""></div>
+                <div class="item"><img src="media/images/slider-3.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-4.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-5.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-6.jpeg" alt=""></div>
+                <div class="item"><img src="media/images/slider-7.jpg" alt=""></div>
+                <!-- Duplicate items for seamless looping -->
+                <div class="item"><img src="media/images/slider-1.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-2.jpeg" alt=""></div>
+                <div class="item"><img src="media/images/slider-3.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-4.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-5.jpg" alt=""></div>
+                <div class="item"><img src="media/images/slider-6.jpeg" alt=""></div>
+                <div class="item"><img src="media/images/slider-7.jpg" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Credit: Manasi Patil, Manasvi Naik & Mehek Abhyankar</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="allrecipes.html">Recipes</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="contactUs.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

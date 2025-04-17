@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    @font-face {
+        font-family: 'Lemonmilk';
+        src: url('media/fonts/lemonmilk.otf') format('opentype');
+    }
+    body {
+        font-family: 'Lemonmilk', sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        color: white;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 100%;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .logo {
+        font-size: 48px;
+        font-weight: bold;
+        margin-right: 40px;
+    }
+
+    .logo span {
+        color: yellow;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 5px;
+    }
+
+    .nav-links a:hover {
+        text-decoration: none;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: yellow;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+    }
+    /* Container styling*/
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    .contact-details {
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+    .social-links a {
+        display: block;
+        margin: 10px;
+        font-size: 18px;
+        color: #0000EE; 
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .social-links a:hover {
+        color: lightcoral;
+    }
+    .map {
+        margin-top: 20px;
+    }
+    iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 10px;
+    }
+
+        /* Footer Styling */
+    .footer {
+        background-color: black;
+        color: white;
+        padding: 15px 20px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-text {
+        font-size: 1rem;
+        color: white; 
+    background: none; 
+    text-shadow: none; 
+    }
+
+    .footer-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-nav ul li {
+        display: inline;
+    }
+
+    .footer-nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .footer-nav ul li a:hover {
+        text-decoration: underline;
+    }
+
+</style>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar">
+        <a href="home.html" class="logo">The Flavorist<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="allrecipes.html">Recipes</a></li>
+            <li><a href="health.html">Health & Diet</a></li>
+            <li><a href="cuisines.html">Cuisines</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="customerFeedback.html">Feedback</a></li>
+            <li><a href="reviews.php">Review</a></li>
+            <li><a href="logout.php">Logout</a></li> 
+        </ul>
+    </nav>
+
+
+   
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="contact-details">
+            <b>Phone:</b>9876534533<br>
+            <b>Email:</b> <a href="business@flavourist.com">business@flavourist.com</a><br>
+            <b>Address:</b> Vidyanagar, Vidya Vihar East, Vidyavihar, Mumbai, Maharashtra 400077
+        </p>
+        
+        <h2>Find us here</h2>
+        <div class="map">
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.0747234738083!2d72.8999262!3d19.072847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627a20bcaa9%3A0xb2fd3bcfeac0052a!2sVidyanagar%2C%20Vidya%20Vihar%20East%2C%20Vidyavihar%2C%20Mumbai%2C%20Maharashtra%20400077!5e0!3m2!1sen!2sin!4v1712100000000!5m2!1sen!2sin" 
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>  
+        </div>
+
+        
+
+        <h2>Follow Us</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com/flavourist" target="_blank">Facebook - flavourist_fb</a>
+            <a href="https://www.instagram.com/flavourist" target="_blank">Instagram - flavourist_insta</a>
+            <a href="https://www.twitter.com/flavourist" target="_blank">Twitter - flavourist_twitter</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Credit: Manasi Patil, Manasvi Naik & Mehek Abhyankar</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="allrecipes.html">Recipes</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="contactUs.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
